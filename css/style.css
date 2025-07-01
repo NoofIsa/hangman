@@ -1,0 +1,17 @@
+.dashes{
+  display: flex;
+  flex-wrap: wrap;
+  width: 325px;
+  justify-content: center;
+}
+
+.dash {
+  width: 40px;
+  height: 50px;
+  font-size: 40px;
+  text-align: center;
+  line-height: 50px;
+  font-family: monospace;
+  user-select: none;
+  color: black;
+}

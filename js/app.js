@@ -13,28 +13,41 @@ const fruite =['apple', 'grape', 'melon', 'mango', 'peach', 'dates', 'berry', 'l
 let computerChoice;
 let guessedLetters;
 let wrongGusess;
+let msg;
+let winner;
+
 //let life;
 /*----- Cached Element References  -----*/
 const lines = document.querySelectorAll('.dash');
 const chance = document.querySelectorAll('.Bomb');
 document.addEventListener('keydown', handleKey);
 const wrongBox = document.querySelector('.box');
+const fruiteButtonEle = document.querySelector('#Fruits');
+const resultDisplayEl = document.querySelector('#result-display')
+const resetBtn = document.getElementById('resetButton');
 
 
+//console.log(fruiteButtonEle);
 
 /*-------------- Functions -------------*/
 function getComputerChoice()
  {
     // generate a random number 0-4
-    const randomIndex = Math.floor(Math.random() * fruite.length)
+    const randomIndex = Math.floor(Math.random() * fruite.length);
     // select the item from the array
-    return fruite[randomIndex]
+    return fruite[randomIndex];
 }
 
 
 function init() {
   guessedLetters = [];
   wrongGusess =[];
+  msg ="";
+  wrongBox.textContent='';
+
+  //winner = true;
+  
+  
   // Track how many bombs
   life = 0;
   computerChoice = getComputerChoice();
@@ -53,8 +66,8 @@ function init() {
 
 
 // function to handle the key press "letter that user press"
-function handleKey(e) {
-  const letter = e.key.toLowerCase();
+function handleKey(event) {
+  const letter = event.key.toLowerCase();
   if (!alphabet.includes(letter))
      return;
   if (guessedLetters.includes(letter)) 
@@ -71,6 +84,10 @@ function handleKey(e) {
     updateWrongBox();
     console.log("life",life);
     updateLife();
+    compare();
+    render();
+    
+
   }
 
 }
@@ -82,9 +99,12 @@ function updateLife() {
   if (life < chance.length) {
     chance[life].textContent = ''; // Remove one bomb
     life++;
-  } else {
+  } 
+ else 
+  {
     console.log("No bombs left. Game over!");
-    alert("Game Over! No bombs left.");
+     
+    //alert("Game Over! No bombs left. The word is " +  computerChoice);
   }
 }
 
@@ -118,6 +138,34 @@ function updateWrongBox() {
   }
 }
 
+function compare() {
+  let winner =true;
+   
+
+  for (let i = 0; i < computerChoice.length; i++) {
+    if (!guessedLetters.includes(computerChoice[i])) {
+      winner = false;
+      break;
+    }
+  }
+
+  if (winner) {
+    msg = '🎉 You win!';
+  } else if (life >= chance.length) {
+    msg = '💥 Game over! No bombs left!';
+  } else {
+    msg = '';
+  }
+}
+
+function render() {
+  if (msg !== '') {
+    resultDisplayEl.textContent = `${msg} "The word was "${computerChoice}.`;
+    document.removeEventListener('keydown', handleKey); // stop the game after win/loss
+  }
+}
+
+
 
 init();
 
@@ -130,4 +178,9 @@ init();
 chance.forEach(element => {
   element.textContent = "💣";
 });
+resetBtn.addEventListener('click', init);
+/*fruiteButtonEle.addEventListener('click', () => {
+  console.log('You clicked me!');
+});*/
+
 

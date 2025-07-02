@@ -13,11 +13,13 @@ const fruite =['apple', 'grape', 'melon', 'mango', 'peach', 'dates', 'berry', 'l
 let computerChoice;
 let guessedLetters;
 let wrongGusess;
+//let life;
 /*----- Cached Element References  -----*/
 const lines = document.querySelectorAll('.dash');
 const chance = document.querySelectorAll('.Bomb');
 document.addEventListener('keydown', handleKey);
 const wrongBox = document.querySelector('.box');
+
 
 
 /*-------------- Functions -------------*/
@@ -33,6 +35,8 @@ function getComputerChoice()
 function init() {
   guessedLetters = [];
   wrongGusess =[];
+  // Track how many bombs
+  life = 0;
   computerChoice = getComputerChoice();
   console.log("Computer chose:", computerChoice);
 
@@ -51,20 +55,37 @@ function init() {
 // function to handle the key press "letter that user press"
 function handleKey(e) {
   const letter = e.key.toLowerCase();
-  if (!alphabet.includes(letter)) return;
-  if (guessedLetters.includes(letter)) return;
+  if (!alphabet.includes(letter))
+     return;
+  if (guessedLetters.includes(letter)) 
+    return;
 
   guessedLetters.push(letter);
 
   if (computerChoice.includes(letter)) {
     console.log("Correct:", letter);
+    displayWord()
   } else {
     wrongGusess.push(letter);
     console.log("Wrong:", letter);
     updateWrongBox();
+    console.log("life",life);
+    updateLife();
   }
 
-  displayWord();
+}
+
+
+
+// Update bombs by removing one for each wrong guess
+function updateLife() {
+  if (life < chance.length) {
+    chance[life].textContent = ''; // Remove one bomb
+    life++;
+  } else {
+    console.log("No bombs left. Game over!");
+    alert("Game Over! No bombs left.");
+  }
 }
 
 

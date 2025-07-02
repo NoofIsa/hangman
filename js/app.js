@@ -22,6 +22,8 @@ const lines = document.querySelectorAll('.dash');
 const chance = document.querySelectorAll('.Bomb');
 document.addEventListener('keydown', handleKey);
 const wrongBox = document.querySelector('.box');
+const wrongLettersList = document.getElementById('wrong-letters-list');
+
 const fruiteButtonEle = document.querySelector('#Fruits');
 const resultDisplayEl = document.querySelector('#result-display')
 const resetBtn = document.getElementById('resetButton');
@@ -42,11 +44,10 @@ function getComputerChoice()
 function init() {
   guessedLetters = [];
   wrongGusess =[];
-  msg ="";
+  resultDisplayEl.textContent='';
   wrongBox.textContent='';
 
   //winner = true;
-  
   
   // Track how many bombs
   life = 0;
@@ -56,7 +57,7 @@ function init() {
   for (let i = 0; i < lines.length; i++) {
     if (i < computerChoice.length) {
       lines[i].textContent = "_";
-      lines[i].style.display = "inline-block";
+      //lines[i].style.display = "inline-block";
     }     
   }
 
@@ -66,7 +67,8 @@ function init() {
 
 
 // function to handle the key press "letter that user press"
-function handleKey(event) {
+function handleKey(event) 
+{
   const letter = event.key.toLowerCase();
   if (!alphabet.includes(letter))
      return;
@@ -78,6 +80,8 @@ function handleKey(event) {
   if (computerChoice.includes(letter)) {
     console.log("Correct:", letter);
     displayWord()
+    compare();     
+    render();       
   } else {
     wrongGusess.push(letter);
     console.log("Wrong:", letter);
@@ -86,8 +90,7 @@ function handleKey(event) {
     updateLife();
     compare();
     render();
-    
-
+  
   }
 
 }
@@ -132,9 +135,9 @@ function updateDashes()
 
 function updateWrongBox() {
   if (wrongGusess.length === 0) {
-    wrongBox.textContent = "Wrong letters";
+    wrongBox.textContent = "";
   } else {
-    wrongBox.textContent = `"Wrong letters : " ${wrongGusess}`;
+    wrongBox.textContent = ` ${wrongGusess}`;
   }
 }
 
@@ -161,7 +164,7 @@ function compare() {
 function render() {
   if (msg !== '') {
     resultDisplayEl.textContent = `${msg} "The word was "${computerChoice}.`;
-    document.removeEventListener('keydown', handleKey); // stop the game after win/loss
+    //document.removeEventListener('keydown', handleKey); // stop the game after win/loss
   }
 }
 

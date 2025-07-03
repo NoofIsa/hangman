@@ -10,14 +10,21 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
+   margin-top:4em ;
 }
+
 /* Title */
 /* Headline styling */
 h1 {
   font-family: Arial, sans-serif;
   text-align: center;
-  color: rgba(109, 7, 60, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   margin-bottom: 30px;
+  margin-top:5em ;
+  display: flex;
+    flex-direction: column;
+   justify-content: center;
+ 
 }
 
 /*.dashes {
@@ -36,13 +43,26 @@ h1 {
   font-family: monospace;
   user-select: none;
   color: rgb(104, 27, 93);
-}*/
+}
 .Bombs {
   display: flex;
   flex-direction: column;
   align-items: flex-end;   
-  gap: 30px;
-  margin-bottom: 40px;
+  gap: 15px;
+  margin-bottom: 20px;
+}*/
+.Bombs {
+  float: right;
+  width: 70px;
+  height: 200px;
+  shape-outside: inset(0);
+  -webkit-shape-outside: inset(0); /* For Safari */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 0 0 10px10px; /* spacing from text */
 }
 
 /* Container to center the dashes */
@@ -50,7 +70,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin: 40px 0;
+  margin: 10px 0;
   font-weight: 500;
 }
 
@@ -118,3 +138,21 @@ main > div:first-of-type {
   height: auto;
   border-radius: 10px; 
 }*/
+
+
+#entryButton {
+  width: 100px;
+  height: 50px;
+  border: 2px solid black;
+  padding: 15px;
+  margin: 20px auto; /* Center the button */
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  position: relative;
+ 
+}

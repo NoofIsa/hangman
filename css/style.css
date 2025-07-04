@@ -4,16 +4,49 @@
   box-sizing: border-box;
 }
 
+
+
+/* Common body styles for all pages */
 body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Background image for the home page only */
+body.home-page {
+  background-image: url('../image/Start.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh; /* Fills the full screen height */
+  margin: 0;          /* Remove top margin that causes white space */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center;     /* Center content horizontally */
+}
+
+/* Background gradient for all other pages */
+body:not(.home-page) {
+  background: linear-gradient(to right, #ebe6db, #c7bba3);
+}
+
+/*body {
   
   background: linear-gradient(to right, #ebe6db, #c7bba3);
   display: flex;
   justify-content: center;
   flex-direction: column;
    margin-top:100vh ;
- /* min-height: 100vh;*/
+ /* min-height: 100vh;}*/
 
-}
+
 
 /* Title */
 /* Headline styling */

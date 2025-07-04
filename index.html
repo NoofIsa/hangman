@@ -10,8 +10,8 @@
 
     
 </head>
-<body>
 
+<body class="home-page">
   
     <div class="container">
     <header>        
@@ -35,7 +35,7 @@
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
@@ -65,3 +65,15 @@
     
 </body>
 </html>
+
+<script>
+  const modal = document.getElementById('exampleModal');
+
+  modal.addEventListener('hide.bs.modal', () => {
+    // If any element inside the modal is focused, blur it
+    const active = document.activeElement;
+    if (modal.contains(active)) {
+      active.blur();
+    }
+  });
+</script>

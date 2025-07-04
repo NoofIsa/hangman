@@ -6,25 +6,22 @@ const alphabet =['a', 'b', 'c', 'd', 'e', 'f', 'g',
                   'v', 'w', 'x', 'y', 'z'];
 
 const fruite =['apple', 'grape', 'melon', 'mango', 'peach', 'dates', 'berry', 'lemon', 'olive', 'guava'];
-
+const animals = ['camel', 'eagle', 'koala', 'dingo', 'horse', 'lemur', 'mouse', 'robin', 'sheep', 'tiger'];
 
 /*---------- Variables (state) ---------*/
 
 let computerChoice;
 let guessedLetters;
-let wrongGusess;
+let wrongGuesses;
 let msg;
-let winner;
-
-//let life;
+//let category ;
+let life;
 /*----- Cached Element References  -----*/
 const lines = document.querySelectorAll('.dash');
 const chance = document.querySelectorAll('.Bomb');
-document.addEventListener('keydown', handleKey);
 const wrongBox = document.querySelector('.box');
-const wrongLettersList = document.getElementById('wrong-letters-list');
-
 const fruiteButtonEle = document.querySelector('#Fruits');
+const animalsButtonEle = document.querySelector('#Animals');
 const resultDisplayEl = document.querySelector('#result-display')
 const resetBtn = document.getElementById('resetButton');
 
@@ -32,25 +29,30 @@ const resetBtn = document.getElementById('resetButton');
 //console.log(fruiteButtonEle);
 
 /*-------------- Functions -------------*/
-function getComputerChoice()
- {
-    // generate a random number 0-4
+
+
+function getComputerChoice() {
+  if (category === 'fruit') {
     const randomIndex = Math.floor(Math.random() * fruite.length);
-    // select the item from the array
     return fruite[randomIndex];
+  } else if (category === 'animals') {
+    const randomIndex = Math.floor(Math.random() * animals.length);
+    return animals[randomIndex];
+  } else {
+    return fruite[Math.floor(Math.random() * fruite.length)];
+  }
 }
 
 
 function init() {
-  guessedLetters = [];
-  wrongGusess =[];
-  resultDisplayEl.textContent='';
-  wrongBox.textContent='';
-
-  //winner = true;
   
+  guessedLetters = [];
+  wrongGuesses =[];
+  if (resultDisplayEl) resultDisplayEl.textContent = '';
+  if (wrongBox) wrongBox.textContent = '';
+  life = 0;  
   // Track how many bombs
-  life = 0;
+  
   computerChoice = getComputerChoice();
   console.log("Computer chose:", computerChoice);
 
@@ -62,40 +64,28 @@ function init() {
   }
 
   chance.forEach(el => el.textContent = "💣");
+  document.addEventListener('keydown', handleKey);
 }
 
 
-
 // function to handle the key press "letter that user press"
-function handleKey(event) 
-{
+function handleKey(event) {
   const letter = event.key.toLowerCase();
-  if (!alphabet.includes(letter))
-     return;
-  if (guessedLetters.includes(letter)) 
-    return;
+  if (!alphabet.includes(letter) || guessedLetters.includes(letter)) return;
 
   guessedLetters.push(letter);
 
   if (computerChoice.includes(letter)) {
-    console.log("Correct:", letter);
-    displayWord()
-    compare();     
-    render();       
+    displayWord();
   } else {
-    wrongGusess.push(letter);
-    console.log("Wrong:", letter);
+    wrongGuesses.push(letter);
     updateWrongBox();
-    console.log("life",life);
     updateLife();
-    compare();
-    render();
-  
   }
 
+  compare();
+  render();
 }
-
-
 
 // Update bombs by removing one for each wrong guess
 function updateLife() {
@@ -103,14 +93,8 @@ function updateLife() {
     chance[life].textContent = ''; // Remove one bomb
     life++;
   } 
- else 
-  {
-    console.log("No bombs left. Game over!");
-     
-    //alert("Game Over! No bombs left. The word is " +  computerChoice);
-  }
-}
-
+  
+}     
 
 // display letters on dashes 
 function displayWord() {
@@ -125,19 +109,11 @@ function displayWord() {
   }
 }
 
-function updateDashes() 
-{
-  dashes.forEach((value, index) => {
-    lines[index].textContent = value;
-
-  });
-}
-
 function updateWrongBox() {
-  if (wrongGusess.length === 0) {
+  if (wrongGuesses.length === 0) {
     wrongBox.textContent = "";
   } else {
-    wrongBox.textContent = ` ${wrongGusess}`;
+    wrongBox.textContent = ` ${wrongGuesses}`;
   }
 }
 
@@ -163,27 +139,35 @@ function compare() {
 
 function render() {
   if (msg !== '') {
-    resultDisplayEl.textContent = `${msg} "The word was "${computerChoice}.`;
-    //document.removeEventListener('keydown', handleKey); // stop the game after win/loss
+    resultDisplayEl.textContent = `${msg} The word was "${computerChoice}" .`;
   }
+}
+if (document.querySelector('#result-display')) {
+  init();
 }
 
 
-
-init();
-
 /*----------- Event Listeners ----------*/
 
-  lines.forEach(element => {
-    element.textContent = "_";
+
+if (fruiteButtonEle) {
+  fruiteButtonEle.addEventListener('click', () => {
+    category = 'fruit';
+    init();
   });
+}
 
-chance.forEach(element => {
-  element.textContent = "💣";
-});
-resetBtn.addEventListener('click', init);
-/*fruiteButtonEle.addEventListener('click', () => {
-  console.log('You clicked me!');
-});*/
-
+if (animalsButtonEle) {
+  animalsButtonEle.addEventListener('click', () => {
+    category = 'animals';
+    init();
+  });
+}
+if (resetBtn) {
+  resetBtn.addEventListener('click', () => {
+    if (category) {
+      init();
+    }
+  });
+}
 

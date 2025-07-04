@@ -11,7 +11,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 100vh;
+  margin-top: 400vh;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -34,7 +34,7 @@ body.home-page {
 
 /* Background gradient for all other pages */
 body:not(.home-page) {
-  background: linear-gradient(to right, #ebe6db, #c7bba3);
+  background: linear-gradient(to right, #faf4e8, #f3d291);
 }
 
 /*body {
@@ -53,39 +53,22 @@ body:not(.home-page) {
 h1 {
   font-family: Arial, sans-serif;
   text-align: center;
-  color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-weight: 1000; /* Makes it very bold */
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* Creates black outline */
   margin-bottom: 30px;
-  margin-top:5em ;
-  display: flex;
-    flex-direction: column;
-   justify-content: center;
- 
-}
-
-/*.dashes {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 30px;
-}
-.dash {
-  width: 40px;
-  height: 50px;
-  font-size: 40px;
-  text-align: center;
-  justify-content: center;
-  line-height: 50px;
-  font-family: monospace;
-  user-select: none;
-  color: rgb(104, 27, 93);
-}
-.Bombs {
+  margin-top: 5em;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;   
-  gap: 15px;
-  margin-bottom: 20px;
-}*/
+  justify-content: center;
+}
+
+
+
 .Bombs {
   float: right;
   width: 70px;
@@ -163,23 +146,17 @@ main > div:first-of-type {
 /* Reset button customization */
 #resetButton {
   padding: 10px 20px;
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
-/*img {
-  width: 250px;
-  height: auto;
-  border-radius: 10px; 
-}*/
 
-
-#entryButton {
+/*#entryButton {
   width: 200px;
   height: 50px;
   border: 2px solid black;
   padding: 15px;
-  margin: 20px auto; /* Center the button */
+  margin: 20px auto; /* Center the button 
   font-size: 1.5rem;
   display: flex;
   align-items: center;
@@ -189,4 +166,25 @@ main > div:first-of-type {
   border-radius: 8px;
   position: relative;
  
+}*/
+.menu-button {
+  display: block;
+  width: 250px;
+  height: 60px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #007BFF;
+  border-radius: 10px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+ /* transition: background-color 0.3s ease;*/
 }
+
+.menu-button:hover {
+  background-color: #0056b3;
+}
+

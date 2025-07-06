@@ -18,11 +18,18 @@
         <h1>Hangman Game !!</h1>
         <a href="fruits.html">
  <div class="d-grid gap-3 col-6 mx-auto">    
-<button class="menu-button" id="Fruits">Fruits🍒</button>
+<button class="menu-button" onclick="startGame('fruits')">Fruits🍒</button>
          </a>
             <a href="animals.html">
-       <button class="menu-button" id="entryButton">Animals🐈</button>        
+<button class="menu-button" onclick="startGame('animals')">Animals🐈</button>
          </a>
+
+ <script>
+  function startGame(selectedCategory) {
+    localStorage.setItem('category', selectedCategory);
+    window.location.href = 'index.html'; 
+  }
+</script>
      <!-- Button trigger modal -->
 
          <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">

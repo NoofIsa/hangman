@@ -15,6 +15,7 @@ let guessedLetters;
 let wrongGuesses;
 let msg;
 let life;
+let category = localStorage.getItem('category') || 'fruits';
 /*----- Cached Element References  -----*/
 const lines = document.querySelectorAll('.dash');
 const chance = document.querySelectorAll('.Bomb');
@@ -39,9 +40,7 @@ function getComputerChoice() {
     return animals[randomIndex];
   }
   // Default to fruit category if none is selected
-  else {
-    return fruits[Math.floor(Math.random() * fruits.length)];
-  }
+ 
 }
 
 // Initializes game state and UI for a new round

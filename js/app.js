@@ -39,8 +39,6 @@ function getComputerChoice() {
     const randomIndex = Math.floor(Math.random() * animals.length);
     return animals[randomIndex];
   }
-  // Default to fruit category if none is selected
- 
 }
 
 // Initializes game state and UI for a new round

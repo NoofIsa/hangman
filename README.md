@@ -15,11 +15,12 @@ The game keeps track of the guesses and shows whether the player wins or loses a
 
 ## 🚀 Getting Started
 
-👉 **Play it here:** [https://your-deployment-link.com]()
+👉 **Play it here:** [https://noofisa.github.io/hangman/]()
 
 👉 **Planning Materials:**
-- [User Stories](./planning/user-stories.md)
-- [Wireframe](./planning/wireframe.png)
+- [User Stories](User%20Stories_hangman_game.md)
+- [Wireframe](./images/planning_image.png)
+- [project1_trello](https://trello.com/b/zpMfT0Hn/project-1)
 
 ### How to Play
 1. Open the link to the game.
@@ -35,8 +36,9 @@ The game keeps track of the guesses and shows whether the player wins or loses a
 
 ## 📚 Attributions
 
-- [Icons from Font Awesome](https://fontawesome.com/)
-
+- [MDN Web Docs](https://developer.mozilla.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [3D Rendering Autumn Landscape Illustration by Freepik](https://www.freepik.com/free-psd/3d-rendering-autumn-landscape-illustration_63915136.htm#from_element=cross_selling__psd)
 ## 🚧 Next Steps
 
 - Add sound effects

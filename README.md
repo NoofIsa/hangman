@@ -42,5 +42,5 @@ The game keeps track of the guesses and shows whether the player wins or loses a
 ## 🚧 Next Steps
 
 - Add sound effects
-- Add couter for the winning times
+- Add a counter for the number of wins  
 - Make it work on phones

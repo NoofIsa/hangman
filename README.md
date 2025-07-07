@@ -15,7 +15,7 @@ The game keeps track of the guesses and shows whether the player wins or loses a
 
 ## 🚀 Getting Started
 
-👉 **Play it here:** [noofisa.github.io/hangman/]()
+👉 **Play it here:** [https://noofisa.github.io/hangman/]()
 
 👉 **Planning Materials:**
 - [User Stories](User%20Stories_hangman_game.md)

@@ -1,7 +1,7 @@
 
 # Hangman
 
-![Game Screenshot](../hangman/images/beginning.png)
+![Game Screenshot](images/beginning.png)
 
 ## 🕹️ Description
 
